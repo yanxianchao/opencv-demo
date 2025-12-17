@@ -1,0 +1,84 @@
+// ================================================
+// VS Code 调试配置文件
+// 作用：配置调试器，定义如何启动和调试程序
+// ================================================
+{
+    // 调试配置文件版本号
+    "version": "0.2.0",
+    
+    // 调试配置数组，可以定义多个调试配置
+    "configurations": [
+        {
+            // 调试配置名称，在调试面板中显示
+            "name": "Debug OpenCV Demo",
+            
+            // 调试器类型：cppdbg表示C++调试器
+            "type": "cppdbg",
+            
+            // 请求类型：launch表示启动程序进行调试
+            "request": "launch",
+            
+            // 要调试的程序路径
+            "program": "${workspaceFolder}/build/bin/opencv_demo",
+            
+            // 程序启动参数
+            "args": [],
+            
+            // 是否在程序入口处停止
+            "stopAtEntry": false,
+            
+            // 当前工作目录
+            "cwd": "${workspaceFolder}",
+            
+            // 环境变量数组
+            "environment": [],
+            
+            // 是否使用外部控制台
+            "externalConsole": false,
+            
+            // MI调试器模式：使用gdb
+            "MIMode": "gdb",
+            
+            // 调试器启动命令
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",  // 命令描述
+                    "text": "-enable-pretty-printing",              // gdb命令
+                    "ignoreFailures": true                          // 忽略失败
+                }
+            ],
+            
+            // 启动调试前执行的任务
+            "preLaunchTask": "CMake Build",
+            
+            // MI调试器路径
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        
+        {
+            // 单文件调试配置
+            "name": "Debug Single File",
+            "type": "cppdbg",
+            "request": "launch",
+            // 调试当前文件编译后的程序
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            // 工作目录为当前文件所在目录
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // 启动调试前执行单文件编译任务
+            "preLaunchTask": "C/C++: g++ build active file with OpenCV",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

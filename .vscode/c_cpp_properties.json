@@ -1,0 +1,51 @@
+// ================================================
+// VS Code C/C++ 扩展配置文件
+// 作用：为C/C++代码提供智能感知、代码补全、错误检查等功能，不用于 运行时编译 配置
+// ================================================
+{
+    // 配置数组，可以定义多个不同平台的配置
+    "configurations": [
+        {
+            // 配置名称，在VS Code状态栏中显示
+            "name": "Linux",
+            // 头文件搜索路径
+            // ${workspaceFolder}/** : 工作区所有文件夹
+            // /usr/include/opencv4 : OpenCV 4.x头文件路径
+            // /usr/include/opencv4/opencv2 : OpenCV 2.x兼容头文件路径
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/opencv4",
+                "/usr/include/opencv4/opencv2"
+            ],
+            // 预处理器宏定义
+            // 例如：["DEBUG", "MYDEFINE=value"]
+            "defines": [],
+            // 编译器路径，用于代码分析和 IntelliSense
+            "compilerPath": "/usr/bin/g++",
+            // C语言标准版本
+            "cStandard": "c11",
+            // C++语言标准版本
+            "cppStandard": "c++17",
+            // IntelliSense模式，指定使用的编译器类型
+            "intelliSenseMode": "linux-gcc-x64",
+            // 浏览配置，用于符号搜索和导航
+            "browse": {
+                // 浏览路径，用于查找符号定义
+                "path": [
+                    "${workspaceFolder}",
+                    "/usr/include/opencv4",
+                    "/usr/include/opencv4/opencv2"
+                ],
+                // 是否限制符号到包含的头文件
+                "limitSymbolsToIncludedHeaders": true,
+                // 数据库文件名（留空使用默认）
+                "databaseFilename": ""
+            },
+            // 配置提供者，指定由哪个扩展提供配置
+            // ms-vscode.cmake-tools : 使用CMake Tools扩展提供的配置
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    // 配置文件版本号
+    "version": 4
+}
